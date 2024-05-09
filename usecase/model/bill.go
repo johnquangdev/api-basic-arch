@@ -1,7 +1,8 @@
 package model
 
 type Category struct {
-	Category_name string `json:"category_name"`
+	CategoryId   int    `json:"category_id"`
+	CategoryName string `json:"category_name"`
 }
 
 type Product struct {

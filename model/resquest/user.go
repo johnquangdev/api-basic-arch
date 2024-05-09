@@ -27,14 +27,15 @@ func (l *LoginRequest) Validate() error {
 }
 
 type Category struct {
-	Category_name string `json:"category_name"`
+	CategoryId   int    `json:"category_id"`
+	CategoryName string `json:"category_name"`
 }
 
 type Product struct {
 	ProductName     string `json:"product_name"`
 	CategoryId      int    `json:"category_id"`
+	QuantityInStock int    `json:"quantity_in_stock"`
 	Price           int    `json:"price"`
 	Description     string `json:"description"`
 	ImageUrl        string `json:"image_url"`
-	QuantityInStock int    `json:"quantidy_in_stock"`
 }

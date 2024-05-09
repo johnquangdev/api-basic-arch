@@ -26,7 +26,7 @@ func (a Auth) CreateCategory(ctx context.Context, req model.Category) error {
 	//check quyền
 	//check token
 	if err := a.repository.Product().CreateCategory(context.Background(), uModel.Category{
-		Category_name: req.Category_name,
+		Category_name: req.CategoryName,
 	}); err != nil {
 		return err
 	}
@@ -38,17 +38,16 @@ func (a Auth) CreateProduct(ctx context.Context, req model.Product) error {
 		if !errors.Is(err, gorm.ErrRecordNotFound) {
 			return fmt.Errorf("category dose not exist")
 		}
-	} else {
 		return err
 	}
 	if err := a.repository.Product().CreateProduct(ctx, uModel.Product{
-		ProductId:       req.ProductId,
+		// ProductId:   req.ProductId,
 		ProductName:     req.ProductName,
-		CategoryID:      req.ProductId,
 		Price:           req.Price,
 		Description:     req.Description,
 		ImageUrl:        req.ImageUrl,
 		QuantityInStock: req.QuantityInStock,
+		CategoryID:      req.CategoryId,
 	}); err != nil {
 		return err
 	}

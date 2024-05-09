@@ -15,7 +15,7 @@ func (Product) TableName() string {
 }
 
 type Category struct {
-	Id            int    `json:"category_id"`
+	CategoryId    int    `json:"category_id"`
 	Category_name string `json:"category_name"`
 }
 

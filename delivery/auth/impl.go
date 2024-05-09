@@ -102,13 +102,13 @@ func (a Auth) CreateCategory(e echo.Context) error {
 		})
 	}
 	if err := a.usecase.Product().CreateCategory(context.Background(), uModel.Category{
-		Category_name: req.Category_name,
+		CategoryName: req.CategoryName,
 	}); err != nil {
 		return err
 	}
 	return e.JSON(http.StatusOK, map[string]interface{}{
 		"status":  http.StatusOK,
-		"massege": req.Category_name,
+		"massege": req.CategoryName,
 	})
 }
 
@@ -131,7 +131,10 @@ func (a Auth) CreateProduct(e echo.Context) error {
 		ImageUrl:        req.ImageUrl,
 		CategoryId:      req.CategoryId,
 	}); err != nil {
-		return err
+		return e.JSON(http.StatusInternalServerError, map[string]interface{}{
+			"status":  "192209",
+			"massege": err.Error(),
+		})
 	}
 	return e.JSON(http.StatusOK, map[string]interface{}{
 		"status":  http.StatusOK,
